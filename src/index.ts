@@ -22,14 +22,14 @@ try {
       if (error && failCi) {
         throw error;
       } else if (error) {
-        core.warning(`Codecov warning: ${error.message}`);
+        core.warning(`Codecov warning0: ${error.message}`);
       }
 
       fs.writeFile(filepath, body, (err) => {
         if (err && failCi) {
           throw err;
         } else if (err) {
-          core.warning(`Codecov warning: ${err.message}`);
+          core.warning(`Codecov warningA: ${err.message}`);
         }
 
         exec.exec('bash', execArgs, options)
@@ -39,7 +39,7 @@ try {
                     `Codecov failed with the following error: ${err.message}`,
                 );
               } else {
-                core.warning(`Codecov warning: ${err.message}`);
+                core.warning(`Codecov warning1: ${err.message}`);
               }
             })
             .then(() => {
@@ -51,7 +51,7 @@ try {
             if (err && failCi) {
               throw err;
             } else if (err) {
-              core.warning(`Codecov warning: ${err.message}`);
+              core.warning(`Codecov warning2: ${err.message}`);
             }
           });
         };
@@ -66,6 +66,6 @@ try {
   if (failCi) {
     core.setFailed(`Codecov failed with the following error: ${error.message}`);
   } else {
-    core.warning(`Codecov warning: ${error.message}`);
+    core.warning(`Codecov warning3: ${error.message}`);
   }
 }
