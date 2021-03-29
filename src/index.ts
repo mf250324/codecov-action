@@ -15,9 +15,9 @@ try {
     url: 'https://codecov.io/bash',
   }, (error, response, body) => {
     const {execArgs, options, filepath, failCi} = buildExec();
-    console.log("exec arg", execArgs);
-    console.log("opts", options);
-    console.log("fp", filepath);
+    console.log(`exec arg`, execArgs);
+    console.log(`opts`, options);
+    console.log(`fp`, filepath);
     try {
       if (error && failCi) {
         throw error;
