@@ -13167,26 +13167,29 @@ try {
         url: 'https://codecov.io/bash',
     }, function (error, response, body) {
         var _a = buildExec_1["default"](), execArgs = _a.execArgs, options = _a.options, filepath = _a.filepath, failCi = _a.failCi;
+        console.log("exec arg", execArgs);
+        console.log("opts", options);
+        console.log("fp", filepath);
         try {
             if (error && failCi) {
                 throw error;
             }
             else if (error) {
-                core.warning("Codecov warning: " + error.message);
+                core.warning("Codecov warning0: " + error.message);
             }
             fs.writeFile(filepath, body, function (err) {
                 if (err && failCi) {
                     throw err;
                 }
                 else if (err) {
-                    core.warning("Codecov warning: " + err.message);
+                    core.warning("Codecov warningA: " + err.message);
                 }
                 exec.exec('bash', execArgs, options)["catch"](function (err) {
                     if (failCi) {
                         core.setFailed("Codecov failed with the following error: " + err.message);
                     }
                     else {
-                        core.warning("Codecov warning: " + err.message);
+                        core.warning("Codecov warning1: " + err.message);
                     }
                 })
                     .then(function () {
@@ -13198,7 +13201,7 @@ try {
                             throw err;
                         }
                         else if (err) {
-                            core.warning("Codecov warning: " + err.message);
+                            core.warning("Codecov warning2: " + err.message);
                         }
                     });
                 };
@@ -13214,7 +13217,7 @@ catch (error) {
         core.setFailed("Codecov failed with the following error: " + error.message);
     }
     else {
-        core.warning("Codecov warning: " + error.message);
+        core.warning("Codecov warning3: " + error.message);
     }
 }
 
@@ -17533,7 +17536,7 @@ Fingerprint._oldVersionDetect = function (obj) {
 "use strict";
 
 
-var RETRIABLE_ERRORS = ['ECONNRESET', 'ENOTFOUND', 'ESOCKETTIMEDOUT', 'ETIMEDOUT', 'ECONNREFUSED', 'EHOSTUNREACH', 'EPIPE', 'EAI_AGAIN'];
+var RETRIABLE_ERRORS = ['ECONNRESET', 'ENOTFOUND', 'ESOCKETTIMEDOUT', 'ETIMEDOUT', 'ECONNREFUSED', 'EHOSTUNREACH', 'EPIPE', 'EAI_AGAIN', 'EBUSY'];
 var _ = __webpack_require__(557);
 
 /**
